@@ -1,0 +1,3 @@
+flask
+jira
+django-environ

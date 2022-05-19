@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+  web:
+    build: ./app/.
+    restart: always
+    volumes:
+      - ./app:/usr/src/app
+    environment:
+      - DEBUG=${DEBUG}
+      - JIRA_NAME=${JIRA_NAME}
+      - JIRA_TKN=${JIRA_TKN}
+      - JIRA_SERV=${JIRA_SERV}
+
+  nginx:
+    build: ./nginx
+    restart: always
+    links:
+      - web:web
+    depends_on:
+      - web
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - nginx/.nginx.env
