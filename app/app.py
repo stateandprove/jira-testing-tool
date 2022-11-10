@@ -13,7 +13,7 @@ env = environ.Env(
 )
 
 
-@app.route('/jira-helper/jira-event', methods=['POST'])
+@app.route('/api/v1/jira-helper/jira-event', methods=['POST'])
 def print_response():
     if request.method == 'POST':
         data = request.data
